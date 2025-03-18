@@ -1,5 +1,6 @@
 import { createPlayer, updatePlayer } from "./player.js"; // Importa funções do módulo player.js
 import { createBullets, updateBullets } from "./bullets.js"; // Importa funções do módulo bullets.js
+import { createEnemies, updateEnemies } from "./enemies.js"; // Importa funções do módulo enemies.js
 
 const config = { // Configurações do jogo
     type: Phaser.AUTO, // Usa WebGL se disponível, senão usa Canvas
@@ -24,9 +25,11 @@ function preload() { // Carrega os recursos do jogo
 function create() { // Inicializa o jogo
     createPlayer(this); // Inicializa o jogador
     createBullets(this); // Inicializa os tiros
+    createEnemies(this); // Inicializa os inimigos
 }
 
 function update(time) { // Atualiza o jogo
     updatePlayer(time); // Atualiza o jogador
     updateBullets(); // Atualiza os tiros
+    updateEnemies(this, time); // Atualiza os inimigos
 }
