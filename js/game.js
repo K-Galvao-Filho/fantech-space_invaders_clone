@@ -12,13 +12,17 @@ const config = { // Configurações do jogo
         arcade: { debug: false } // Desativa o modo de depuração
     },
     scene: { preload, create, update } // Funções de callback
+    
 };
 
 const game = new Phaser.Game(config); // Cria o jogo
 
 function preload() { // Carrega os recursos do jogo
     this.load.image('player', 'assets/player.png'); // Carrega a imagem do jogador
-    this.load.image('bullet', 'assets/bullet.png'); // Carrega a imagem do tiro
+    this.load.spritesheet('bullet', 'assets/bullet.png', {
+        frameWidth: 8,
+        frameHeight: 16
+    });
     this.load.image('enemy', 'assets/enemy.png'); // Carrega a imagem do inimigo
 }
 
