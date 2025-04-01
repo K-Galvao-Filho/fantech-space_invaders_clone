@@ -1,11 +1,11 @@
 import { createPlayer, updatePlayer } from "./player.js"; // Importa funções do módulo player.js
-import { createBullets, updateBullets } from "./bullets.js"; // Importa funções do módulo bullets.js
-import { createEnemies, updateEnemies } from "./enemies.js"; // Importa funções do módulo enemies.js
+import { bullets, createBullets, updateBullets } from "./bullets.js"; // Importa funções do módulo bullets.js
+import { enemies, createEnemies, updateEnemies } from "./enemies.js"; // Importa funções do módulo enemies.js
 
 const config = { // Configurações do jogo
     type: Phaser.AUTO, // Usa WebGL se disponível, senão usa Canvas
-    width: 1024, // Usa toda a largura disponível
-    height:768, // Usa toda a altura disponível
+    width: 800, // Usa toda a largura disponível
+    height:600, // Usa toda a altura disponível
     parent: 'game-container',
     physics: {
         default: 'arcade', // Motor de física Arcade
@@ -22,10 +22,22 @@ function preload() { // Carrega os recursos do jogo
     this.load.image('enemy', 'assets/enemy.png'); // Carrega a imagem do inimigo
 }
 
-function create() { // Inicializa o jogo
-    createPlayer(this); // Inicializa o jogador
-    createBullets(this); // Inicializa os tiros
-    createEnemies(this); // Inicializa os inimigos
+function create() {
+    createPlayer(this);
+    createBullets(this);
+    createEnemies(this);
+
+    // 🚨 Só aqui os grupos estão prontos para colisão
+    this.physics.add.overlap(
+        bullets,
+        enemies,
+        (bullet, enemy) => {
+            bullet.destroy();
+            enemy.destroy();
+        },
+        null,
+        this
+    );
 }
 
 function update(time) { // Atualiza o jogo

@@ -17,11 +17,12 @@ export function shootBullet(x, y, time) { // Função para atirar
     }
 }
 
-export function updateBullets() { // Função para atualizar os tiros
-    bullets.children.each(function (bullet) { // Para cada tiro no grupo de tiros 
-        if (bullet.active && bullet.y < 0) { // Se o tiro estiver ativo e sair da tela
-            bullet.setActive(false); // Desativa o tiro
-            bullet.setVisible(false); // Torna o tiro invisível
+export function updateBullets() {
+    if (!bullets || !bullets.children) return; // Garante que bullets e children existem
+
+    bullets.children.each(function (bullet) {
+        if (bullet.active && bullet.y < 0) {
+            bullet.destroy(); // Ou desativa se preferir reaproveitar
         }
     });
 }
