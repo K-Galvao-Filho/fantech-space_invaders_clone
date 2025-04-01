@@ -19,10 +19,7 @@ const game = new Phaser.Game(config); // Cria o jogo
 
 function preload() { // Carrega os recursos do jogo
     this.load.image('player', 'assets/player.png'); // Carrega a imagem do jogador
-    this.load.spritesheet('bullet', 'assets/bullet.png', {
-        frameWidth: 8,
-        frameHeight: 16
-    });
+    this.load.image('bullet', 'assets/bullet.png'); // Carrega a imagem do tiro
     this.load.image('enemy', 'assets/enemy.png'); // Carrega a imagem do inimigo
 }
 
@@ -31,7 +28,7 @@ function create() {
     createBullets(this);
     createEnemies(this);
 
-    // 🚨 Só aqui os grupos estão prontos para colisão
+    //Só aqui os grupos estão prontos para colisão
     this.physics.add.overlap(
         bullets,
         enemies,
