@@ -11,6 +11,7 @@ O objetivo do jogo é **eliminar todos os inimigos** enquanto desvia dos ataques
 A proposta é criar um **modo multiplayer**, permitindo que jogadores joguem juntos online.  
 
 Atualmente, o projeto está na **Fase 1 - Protótipo Singleplayer**, contendo:
+
 ✅ Movimentação da nave.  
 ✅ Disparo de projéteis.  
 ✅ Inimigos com movimentação em grupo.  
